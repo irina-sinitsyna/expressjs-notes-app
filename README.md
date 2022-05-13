@@ -6,6 +6,6 @@ Nodejs server (expressjs) with path `/api/greetings` which receives parameter `n
 
 Deployed on Heroku:
 
-[Bad request](https://stormy-shore-65121.herokuapp.com/api/greetings)
+[Bad request](https://rocky-sierra-22564.herokuapp.com/api/greetings)
 
 [Successful response](https://stormy-shore-65121.herokuapp.com/api/greetings/?name=Reviewer)
