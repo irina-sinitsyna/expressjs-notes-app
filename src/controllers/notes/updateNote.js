@@ -3,6 +3,7 @@ import MESSAGE from '../../constants/messages.js';
 import STATUS from '../../constants/statuses.js';
 import { VALIDATION_ERROR_TYPE } from '../../constants/validation.js';
 import { validateUpdatedNote } from '../../../validation/validateUpdatedNote.js';
+import { CURRENT_DATE_ISO } from '../../constants/config.js';
 
 const updateNote = async (request, response) => {
   const { error, value } = validateUpdatedNote(request.body);
@@ -12,7 +13,11 @@ const updateNote = async (request, response) => {
       message: MESSAGE.validationError,
       details: error.details,
     });
-  const updatedNote = await Note.findByIdAndUpdate(value._id, value, { new: true });
+  const updatedNote = await Note.findByIdAndUpdate(
+    value._id,
+    { updatedAt: CURRENT_DATE_ISO, ...value },
+    { new: true },
+  );
   return response.json(updatedNote);
 };
 

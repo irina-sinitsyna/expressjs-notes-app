@@ -6,8 +6,8 @@ const updateNoteValidationSchema = Joi.object().keys({
   _id: Joi.string().required(),
   title: Joi.string().min(MIN_LENGTH).required(),
   content: Joi.string().min(MIN_LENGTH).max(MAX_LENGTH).required(),
-  createdAt: Joi.string().required(),
-  updatedAt: Joi.string(),
+  createdAt: Joi.date().iso(),
+  updatedAt: Joi.date().iso(),
 });
 
 export default updateNoteValidationSchema;
