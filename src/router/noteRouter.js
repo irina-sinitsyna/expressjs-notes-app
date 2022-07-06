@@ -7,12 +7,12 @@ import getNote from '../controllers/notes/getNote.js';
 import updateNote from '../controllers/notes/updateNote.js';
 import deleteNote from '../controllers/notes/deleteNote.js';
 
-const router = new Router();
+const noteRouter = new Router();
 
-router.post(API.notes, createNote);
-router.get(API.notes, getAllNotes);
-router.get(API.noteById, getNote);
-router.put(API.noteById, updateNote);
-router.delete(API.noteById, deleteNote);
+noteRouter.post(API.notes, createNote);
+noteRouter.get(API.notes, getAllNotes);
+noteRouter.get(API.noteById, getNote);
+noteRouter.put(API.noteById, updateNote);
+noteRouter.delete(API.noteById, deleteNote);
 
-export default router;
+export default noteRouter;

@@ -2,10 +2,11 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
-import router from './src/router/index.js';
 import MESSAGE from './src/constants/messages.js';
 import API from './src/constants/routes.js';
 import { ADDITIONAL_PORT } from './src/constants/config.js';
+import noteRouter from './src/router/noteRouter.js';
+import greetingsRouter from './src/router/greetingsRouter.js';
 
 dotenv.config();
 
@@ -14,7 +15,8 @@ const app = express();
 const port = process.env.PORT || ADDITIONAL_PORT;
 
 app.use(express.json());
-app.use(API.base, router);
+app.use(API.base, noteRouter);
+app.use(API.base, greetingsRouter);
 
 const startApp = async () => {
   try {
@@ -26,12 +28,3 @@ const startApp = async () => {
 };
 
 startApp();
-
-app.get('/api/greetings', (request, response) => {
-  const { name } = request.query;
-  if (name) {
-    response.send(`<p>Hello ${name}!</p>`);
-  } else {
-    response.status(STATUS.BAD_REQUEST).json({ error: 'Name undefined' });
-  }
-});
