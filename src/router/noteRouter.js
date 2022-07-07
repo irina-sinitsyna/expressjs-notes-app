@@ -6,6 +6,7 @@ import getAllNotes from '../controllers/notes/getAllNotes.js';
 import getNote from '../controllers/notes/getNote.js';
 import updateNote from '../controllers/notes/updateNote.js';
 import deleteNote from '../controllers/notes/deleteNote.js';
+import getPaginatedNotes from '../controllers/notes/getAllNotes.js';
 
 const noteRouter = new Router();
 

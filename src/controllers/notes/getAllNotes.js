@@ -1,13 +1,17 @@
 import Note from '../../schemas/Note.js';
 import STATUS from '../../constants/statuses.js';
+import { INITIAL_NOTES_PAGE, NOTES_LIMIT_PER_PAGE } from '../../constants/config.js';
 
-const getAllNotes = async (request, response) => {
+const getPaginatedNotes = async (request, response, next) => {
+  const { page = INITIAL_NOTES_PAGE } = request.query;
   try {
-    const notes = await Note.find();
-    return response.json(notes);
+    const paginatedNotes = await Note.find()
+      .limit(NOTES_LIMIT_PER_PAGE)
+      .skip((page - INITIAL_NOTES_PAGE) * NOTES_LIMIT_PER_PAGE);
+    return response.json(paginatedNotes);
   } catch (error) {
-    response.status(STATUS.SERVER_ERROR).json(error);
+    return response.status(STATUS.SERVER_ERROR).json(error);
   }
 };
 
-export default getAllNotes;
+export default getPaginatedNotes;

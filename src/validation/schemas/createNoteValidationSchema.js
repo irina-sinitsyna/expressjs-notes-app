@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-import { MIN_LENGTH, MAX_LENGTH } from '../../src/constants/validation.js';
+import { MIN_LENGTH, MAX_LENGTH } from '../../constants/validation.js';
 
 const createNoteValidationSchema = Joi.object().keys({
   _id: Joi.string(),
