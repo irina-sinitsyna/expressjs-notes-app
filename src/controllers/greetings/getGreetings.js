@@ -6,7 +6,7 @@ const getGreetings = async (request, response) => {
   if (name) {
     response.send(`<p>Hello ${name}!</p>`);
   }
-  response.status(STATUS.BAD_REQUEST).json({ error: 'Name undefined' });
+  response.status(STATUS.badRequest).json({ error: MESSAGE.undefinedName });
 };
 
 export default getGreetings;

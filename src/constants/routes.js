@@ -3,6 +3,8 @@ const API = {
   notes: '/notes',
   noteById: '/notes/:id',
   greetings: '/greetings',
+  registration: '/registration',
+  login: '/login',
 };
 
 export default API;
