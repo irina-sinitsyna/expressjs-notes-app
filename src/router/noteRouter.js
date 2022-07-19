@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import passport from 'passport';
 
 import API from '../constants/routes.js';
 import createNote from '../controllers/notes/createNote.js';
@@ -9,10 +10,10 @@ import deleteNote from '../controllers/notes/deleteNote.js';
 
 const noteRouter = new Router();
 
-noteRouter.post(API.notes, createNote);
-noteRouter.get(API.notes, getAllNotes);
-noteRouter.get(API.noteById, getNote);
-noteRouter.put(API.noteById, updateNote);
-noteRouter.delete(API.noteById, deleteNote);
+noteRouter.post(API.notes, passport.authenticate('jwt', { session: false }), createNote);
+noteRouter.get(API.notes, passport.authenticate('jwt', { session: false }), getAllNotes);
+noteRouter.get(API.noteById, passport.authenticate('jwt', { session: false }), getNote);
+noteRouter.put(API.noteById, passport.authenticate('jwt', { session: false }), updateNote);
+noteRouter.delete(API.noteById, passport.authenticate('jwt', { session: false }), deleteNote);
 
 export default noteRouter;

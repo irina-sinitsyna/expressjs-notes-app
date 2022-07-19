@@ -5,6 +5,8 @@ const API = {
   greetings: '/greetings',
   registration: '/registration',
   login: '/login',
+  refresh: '/login/refresh',
+  users: '/users',
 };
 
 export default API;

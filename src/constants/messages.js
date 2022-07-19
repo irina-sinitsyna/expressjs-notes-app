@@ -8,6 +8,10 @@ const MESSAGE = {
   undefinedName: 'Name is undefined',
   registrationSuccess: 'Registration completed successfully',
   loginSuccess: 'Authorization completed successfully',
+  authorizationError: 'User is not authorized',
+  noPermission: "You don't have access",
+  noRefresh: 'Refresh token not provided',
+  nonexistentNote: "Note doesn't exist",
 };
 
 export default MESSAGE;

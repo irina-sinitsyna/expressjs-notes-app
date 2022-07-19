@@ -1,33 +1,51 @@
 import bcrypt from 'bcryptjs';
 
-import User from '../../models/User.js';
+import User from '../../models/User/User.js';
 import STATUS from '../../constants/statuses.js';
 import MESSAGE from '../../constants/messages.js';
-import { VALIDATION_ERROR_TYPE } from '../../constants/validation.js';
+import generateAccessToken from '../../utils/token/generateAccessToken.js';
+import generateRefreshToken from '../../utils/token/generateRefreshToken.js';
+import { ERROR_TYPE } from '../../constants/errorTypes.js';
 import { validateAuth } from '../../validation/auth/validateAuth.js';
 
-const loginUser = async (request, response) => {
-  const { error } = validateAuth(request.body);
+const loginUser = async (request, response, next) => {
+  const { error, value } = validateAuth(request.body);
   if (error) {
     return response.status(STATUS.badRequest).json({
-      type: VALIDATION_ERROR_TYPE,
+      type: ERROR_TYPE.validation,
       message: MESSAGE.validationError,
       details: error.details,
     });
   }
   try {
-    const { email, password } = request.body;
+    const { email, password } = value;
     const user = await User.findOne({ email });
     if (!user) {
-      return response.status(STATUS.badRequest).json(MESSAGE.nonexistentEmail);
+      response.status(STATUS.badRequest).json({
+        type: ERROR_TYPE.nonexistentUser,
+        message: MESSAGE.nonexistentEmail,
+      });
+      return;
     }
-    const checkPassword = await bcrypt.compare(password, user.password);
-    if (!checkPassword) {
-      return response.status(STATUS.badRequest).json(MESSAGE.incorrectPassword);
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      response.status(STATUS.badRequest).json({
+        type: ERROR_TYPE.incorrectPassword,
+        message: MESSAGE.incorrectPassword,
+      });
+      return;
     }
-    return response.status(STATUS.ok).json(MESSAGE.loginSuccess);
+    const token = generateAccessToken(user._id);
+    const refreshToken = generateRefreshToken(user._id);
+    response.json({
+      message: MESSAGE.loginSuccess,
+      token: token,
+      refreshToken: refreshToken,
+    });
+    return;
   } catch (error) {
-    response.status(STATUS.serverError).json(error);
+    response.status(STATUS.serverError).json({ error });
+    return;
   }
 };
 
