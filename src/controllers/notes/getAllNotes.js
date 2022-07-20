@@ -1,8 +1,8 @@
 import Note from '../../models/Note.js';
-import STATUS from '../../constants/statuses.js';
+import { STATUS } from '../../constants/statuses.js';
 import { INITIAL_NOTES_PAGE, NOTES_LIMIT_PER_PAGE } from '../../constants/config.js';
 import filterNotes from '../../utils/notes/filterNotes.js';
-import MESSAGE from '../../constants/messages.js';
+import { MESSAGE } from '../../constants/messages.js';
 
 const getAllNotes = async (request, response, next) => {
   if (!request.user._id) {

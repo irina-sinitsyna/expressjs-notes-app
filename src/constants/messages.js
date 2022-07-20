@@ -1,4 +1,4 @@
-const MESSAGE = {
+export const MESSAGE = {
   noId: 'Id is not defined',
   serverStarted: 'SERVER STARTED ON PORT ',
   validationError: 'The request data has not passed validation',
@@ -13,5 +13,3 @@ const MESSAGE = {
   noRefresh: 'Refresh token not provided',
   nonexistentNote: "Note doesn't exist",
 };
-
-export default MESSAGE;

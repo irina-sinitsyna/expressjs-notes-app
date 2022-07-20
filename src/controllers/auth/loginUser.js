@@ -1,8 +1,8 @@
 import bcrypt from 'bcryptjs';
 
 import User from '../../models/User/User.js';
-import STATUS from '../../constants/statuses.js';
-import MESSAGE from '../../constants/messages.js';
+import { STATUS } from '../../constants/statuses.js';
+import { MESSAGE } from '../../constants/messages.js';
 import generateAccessToken from '../../utils/token/generateAccessToken.js';
 import generateRefreshToken from '../../utils/token/generateRefreshToken.js';
 import { ERROR_TYPE } from '../../constants/errorTypes.js';

@@ -6,7 +6,3 @@ export const HASH_ARGUMENT = 9;
 export const TOKEN_PART_INDEX = 1;
 export const TOKEN_LIFE_IN_SECONDS = 10800;
 export const REFRESH_TOKEN_LIFE_IN_SECONDS = 604800;
-
-export const REQUEST_METHOD = {
-  options: 'OPTIONS',
-};

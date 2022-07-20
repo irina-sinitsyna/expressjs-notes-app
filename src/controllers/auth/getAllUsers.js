@@ -1,4 +1,4 @@
-import STATUS from '../../constants/statuses.js';
+import { STATUS } from '../../constants/statuses.js';
 import User from '../../models/User/User.js';
 
 const getAllUsers = async (request, response) => {

@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import passport from 'passport';
 
-import MESSAGE from './src/constants/messages.js';
+import { MESSAGE } from './src/constants/messages.js';
 import API from './src/constants/routes.js';
 import { ADDITIONAL_PORT } from './src/constants/config.js';
 import noteRouter from './src/router/noteRouter.js';

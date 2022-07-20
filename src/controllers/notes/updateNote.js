@@ -1,6 +1,6 @@
 import Note from '../../models/Note.js';
-import MESSAGE from '../../constants/messages.js';
-import STATUS from '../../constants/statuses.js';
+import { MESSAGE } from '../../constants/messages.js';
+import { STATUS } from '../../constants/statuses.js';
 import { validateUpdatedNote } from '../../validation/notes/validateUpdatedNote.js';
 import { CURRENT_DATE_ISO } from '../../constants/config.js';
 import { ERROR_TYPE } from '../../constants/errorTypes.js';

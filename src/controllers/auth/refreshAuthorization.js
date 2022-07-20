@@ -1,6 +1,6 @@
 import { ERROR_TYPE } from '../../constants/errorTypes.js';
-import MESSAGE from '../../constants/messages.js';
-import STATUS from '../../constants/statuses.js';
+import { MESSAGE } from '../../constants/messages.js';
+import { STATUS } from '../../constants/statuses.js';
 import generateAccessToken from '../../utils/token/generateAccessToken.js';
 import generateRefreshToken from '../../utils/token/generateRefreshToken.js';
 import verifyRefreshToken from '../../utils/token/verifyRefreshToken.js';

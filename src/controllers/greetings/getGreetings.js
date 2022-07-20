@@ -1,5 +1,5 @@
-import MESSAGE from '../../constants/messages.js';
-import STATUS from '../../constants/statuses.js';
+import { MESSAGE } from '../../constants/messages.js';
+import { STATUS } from '../../constants/statuses.js';
 
 const getGreetings = async (request, response) => {
   const { name } = request.query;
